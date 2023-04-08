@@ -1,0 +1,20 @@
+export type ClientModel = {
+  name: string;
+  email: string;
+  phone: any;
+  notes: string;
+  password: string;
+  category: string;
+  lastName: string;
+  subCategory: string;
+  planAssigned: string;
+  initialDate: string;
+  expiredDate: string;
+  id?: any;
+  login: boolean;
+  height: string;
+  weight: string;
+  goals: string;
+  injuries: string;
+  medicalConditions: string;
+};
