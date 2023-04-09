@@ -4,6 +4,10 @@ import {
   lastWalletMovementsData,
   lastWalletMovementsColumns,
 } from "views/trainer/dashboard/Util";
+import {
+  handleGetTotalWalletIncome,
+  handleGetTotalWalletExpenses,
+} from "util/wallet";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Stat, Heading, Container, StatNumber } from "@chakra-ui/react";
 import { useRouter } from "next/router";
@@ -67,7 +71,9 @@ export default function Dashboard({ clients, trainer, movements }: any) {
         >
           <Heading size="sm">INGRESOS ESTE MES</Heading>
           <Stat>
-            <StatNumber color="green">$35.500</StatNumber>
+            <StatNumber color="green">
+              ${handleGetTotalWalletIncome(movements).toLocaleString("ES-ar")}
+            </StatNumber>
           </Stat>
         </Container>
         <Container
@@ -131,7 +137,12 @@ export default function Dashboard({ clients, trainer, movements }: any) {
           <Heading size="sm" mb="5">
             TOTAL ESTE MES
           </Heading>
-          <Pie data={dataForChart} />
+          <Pie
+            data={dataForChart(
+              handleGetTotalWalletIncome(movements),
+              handleGetTotalWalletExpenses(movements)
+            )}
+          />
         </Container>
       </Container>
     </Container>

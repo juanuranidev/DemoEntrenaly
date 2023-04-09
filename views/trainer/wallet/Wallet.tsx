@@ -18,6 +18,10 @@ import {
   lastWalletMovementsData,
   initialWalletMovementsColumns,
 } from "views/trainer/wallet/Util";
+import {
+  handleGetTotalWalletIncome,
+  handleGetTotalWalletExpenses,
+} from "util/wallet";
 import ModalWalletMovements from "components/modals/modalWalletMovements/ModalWalletMovements";
 import ReusableTable from "components/reusableTable/ReusableTable";
 import moment from "moment";
@@ -36,26 +40,6 @@ export default function Wallet({ clients, movements, setMovements }: any) {
 
   const handleSubmitWalletMovement = (movement: any) => {
     setMovements([...movements, movement]);
-  };
-
-  const handleGetTotalExpenses = () => {
-    let totalExpenses = 0;
-
-    movements.forEach((movement: any) => {
-      totalExpenses += movement.type === 0 ? movement.amount : null;
-    });
-
-    return totalExpenses.toLocaleString("ES-ar");
-  };
-
-  const handleGetTotalIncome = () => {
-    let totalIncome = 0;
-
-    movements.forEach((movement: any) => {
-      totalIncome += movement.type === 1 ? movement.amount : null;
-    });
-
-    return totalIncome.toLocaleString("ES-ar");
   };
 
   const handleChangeWalletDate = (e: any) => {
@@ -88,14 +72,14 @@ export default function Wallet({ clients, movements, setMovements }: any) {
         <Box
           py="2"
           px="5"
+          mb="5"
+          display="flex"
           borderRadius="md"
-          w={{ base: "100%", md: "20rem" }}
+          alignItems="center"
           bg="background.primary"
           justifyContent="flex-end"
           shadow="brand_shadow_md"
-          mb="5"
-          display="flex"
-          alignItems="center"
+          w={{ base: "100%", md: "20rem" }}
         >
           <Heading size="sm" mr="5">
             MES
@@ -121,9 +105,9 @@ export default function Wallet({ clients, movements, setMovements }: any) {
             borderRadius="md"
             maxW="container.xl"
             bg="background.primary"
-            justifyContent="space-between"
             shadow="brand_shadow_md"
             mb={{ base: "5", md: "0" }}
+            justifyContent="space-between"
             w={{ base: "100%", md: "20rem" }}
             onClick={() => handleOpenModalWalletMovements(0)}
           >
@@ -131,7 +115,9 @@ export default function Wallet({ clients, movements, setMovements }: any) {
               GASTOS TOTALES
             </Heading>
             <Stat>
-              <StatNumber color="red">-${handleGetTotalExpenses()}</StatNumber>
+              <StatNumber color="red">
+                -${handleGetTotalWalletExpenses(movements)}
+              </StatNumber>
               <StatHelpText>
                 Mes de {moment(selectedDate).format("MMMM - yyyy")}
               </StatHelpText>
@@ -153,7 +139,9 @@ export default function Wallet({ clients, movements, setMovements }: any) {
               INGRESOS TOTALES
             </Heading>
             <Stat w="100%">
-              <StatNumber color="green">${handleGetTotalIncome()}</StatNumber>
+              <StatNumber color="green">
+                ${handleGetTotalWalletIncome(movements)}
+              </StatNumber>
               <StatHelpText>
                 Mes de {moment(selectedDate).format("MMMM - yyyy")}
               </StatHelpText>
@@ -163,10 +151,10 @@ export default function Wallet({ clients, movements, setMovements }: any) {
       </Container>
       <Container
         p="5"
-        shadow="brand_shadow_lg"
         borderRadius="md"
         maxW="container.xl"
         bg="background.primary"
+        shadow="brand_shadow_lg"
       >
         <ButtonGroup w="100%" justifyContent="space-between">
           <Button
