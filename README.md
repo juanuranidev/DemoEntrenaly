@@ -1,3 +1,5 @@
+![demo-entrenaly-preview](https://user-images.githubusercontent.com/96846723/230764810-130a3b05-3423-4742-a5f4-8459cd8c80cf.png)
+
 # Techno Store
 
 Demo Entrenaly is a demo application that I will use to give a free trial to potential Entrenaly customers and also to show people a glimpse of how it is made.
