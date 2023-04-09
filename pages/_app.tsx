@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   clientsInitialValue,
   trainerInitialValue,
+  initialWalletMovements,
   workoutPlansInitialValue,
   nutritionPlansInitialValue,
 } from "util/initialValues";
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [plans, setPlans] = useState([workoutPlansInitialValue]);
   const [clients, setClients] = useState<ClientModel[]>([clientsInitialValue]);
   const [trainer, setTrainer] = useState(trainerInitialValue);
+  const [movements, setMovements] = useState<any>(initialWalletMovements);
   const [nutritionPlans, setNutritionPlans] = useState([
     nutritionPlansInitialValue,
   ]);
@@ -33,8 +35,10 @@ export default function App({ Component, pageProps }: AppProps) {
         trainer={trainer}
         clients={clients}
         setPlans={setPlans}
+        movements={movements}
         setTrainer={setTrainer}
         setClients={setClients}
+        setMovements={setMovements}
         nutritionPlans={nutritionPlans}
         setNutritionPlans={setNutritionPlans}
       />
