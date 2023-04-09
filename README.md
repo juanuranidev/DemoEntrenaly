@@ -28,44 +28,44 @@ Personal page displaying information about you that everyone can see if you want
 
 # Main libraries
 
-**Next for a SEO-friendly web 13.1.1**
-npm create next-app my-app
+**Next for a SEO-friendly web 13.1.1**<br>
+npm create next-app my-app<br>
 https://create-react-app.dev/
 
-**TypeScript for stronger typing 4.9.4**
-npm i typescript
+**TypeScript for stronger typing 4.9.4**<br>
+npm i typescript<br>
 https://www.typescriptlang.org/
 
-**Chakra-ui for styling 2.5.5**
-npm i @chakra-ui/react
+**Chakra-ui for styling 2.5.5**<br>
+npm i @chakra-ui/react<br>
 https://chakra-ui.com/
 
-**Framer motion for animations 7.10.3**
-npm i framer-motion
+**Framer motion for animations 7.10.3**<br>
+npm i framer-motion<br>
 https://www.framer.com/motion/
 
-**Moment for better date management 2.29.4**
-npm i moment
+**Moment for better date management 2.29.4**<br>
+npm i moment<br>
 https://momentjs.com/
 
-**react Alice Carousel for a carousel of images 2.7.0**
-npm i react-alice-carousel
+**react Alice Carousel for a carousel of images 2.7.0**<br>
+npm i react-alice-carousel<br>
 https://www.npmjs.com/package/react-alice-carousel
 
-**Chart JS for charts 5.2.0**
-npm i react-chartjs-2
+**Chart JS for charts 5.2.0**<br>
+npm i react-chartjs-2<br>
 https://react-chartjs-2.js.org/
 
-**Hotjar for analytics 5.4.1**
-npm i react-hotjar
+**Hotjar for analytics 5.4.1**<br>
+npm i react-hotjar<br>
 https://www.npmjs.com/package/react-hotjar
 
-**Yup for forms validations 0.32.11**
-npm i yup
+**Yup for forms validations 0.32.11**<br>
+npm i yup<br>
 https://www.npmjs.com/package/yup
 
-**React pdf renderer for pdf's 3.0.2**
-npm i @react-pdf/renderer
+**React pdf renderer for pdf's 3.0.2**<br>
+npm i @react-pdf/renderer<br>
 https://react-pdf.org/
 
 # My Portfolio
