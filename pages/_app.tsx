@@ -12,6 +12,7 @@ import { hotjarConnect } from "config/hotjar";
 import { ClientModel } from "models/client.model";
 import { chakraTheme } from "../assets/chakra/chakraTheme";
 import Footer from "components/footer/Footer";
+import Head from "next/head";
 import "assets/css/base.css";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -29,6 +30,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ChakraProvider theme={chakraTheme}>
+      <Head>
+        <title>Entrenaly Demo</title>
+        <meta name="description" content="Haciendo crecer tu clientela" />
+        <link rel="icon" href="/dumbell.ico" />
+      </Head>
       <Component
         {...pageProps}
         plans={plans}
