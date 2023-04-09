@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Preview Image](/demoentrenaly/assets/images/preview.png?raw=true "Preview of Demo Entrenaly")
 
-## Getting Started
+# Techno Store
 
-First, run the development server:
+Demo Entrenaly is a demo application that I will use to give a free trial to potential Entrenaly customers and also to show people a glimpse of how it is made.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+# Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://demo-entrenaly.vercel.app/<br>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Main Technologies
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Login page<br>
+Dashboard page where you can see your income and expenses of the month, clients and wallet movements<br>
+Wallet page where you can track your income and expenses, with client-related movements and a filter by month<br>
+Plans page where you can create, view, edit and delete nutrition and workout plans<br>
+Clients page where you can create, view, edit and delete your clients<br>
+Settings page where you can view, edit your profile and decide if you want a personal page or not<br>
+Personal page displaying information about you that everyone can see if you want them to
 
-## Learn More
+# Main libraries
 
-To learn more about Next.js, take a look at the following resources:
+**Next for a SEO-friendly web 13.1.1**
+npm create next-app my-app
+https://create-react-app.dev/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**TypeScript for stronger typing 4.9.4**
+npm i typescript
+https://www.typescriptlang.org/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Chakra-ui for styling 2.5.5**
+npm i @chakra-ui/react
+https://chakra-ui.com/
 
-## Deploy on Vercel
+**Framer motion for animations 7.10.3**
+npm i framer-motion
+https://www.framer.com/motion/
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Moment for better date management 2.29.4**
+npm i moment
+https://momentjs.com/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**react Alice Carousel for a carousel of images 2.7.0**
+npm i react-alice-carousel
+https://www.npmjs.com/package/react-alice-carousel
+
+**Chart JS for charts 5.2.0**
+npm i react-chartjs-2
+https://react-chartjs-2.js.org/
+
+**Hotjar for analytics 5.4.1**
+npm i react-hotjar
+https://www.npmjs.com/package/react-hotjar
+
+**Yup for forms validations 0.32.11**
+npm i yup
+https://www.npmjs.com/package/yup
+
+**React pdf renderer for pdf's 3.0.2**
+npm i @react-pdf/renderer
+https://react-pdf.org/
+
+# My Portfolio
+
+https://juanurani.netlify.app/
+
+# My LinkedIn
+
+https://www.linkedin.com/in/juanurani/
