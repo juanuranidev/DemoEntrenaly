@@ -92,9 +92,14 @@ export default function Plans({
   };
 
   return (
-    <Container maxW="full" minH="100vh" bg="background.tertiary" p="0">
+    <Container
+      p="0"
+      maxW="full"
+      h="calc(100vh - 3rem)"
+      bg="background.tertiary"
+    >
       <Navbar />
-      <Container pt="5" px="0" borderRadius="md" maxW="container.xl">
+      <Container pt="10" px="0" borderRadius="md" maxW="container.xl">
         <Tabs variant="enclosed-colored" colorScheme="brand">
           <TabList>
             <Tab border="none" onClick={() => setSearchBarValue("")}>
