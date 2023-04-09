@@ -15,18 +15,16 @@ import {
 } from "@chakra-ui/react";
 import {
   initialWalletDate,
-  initialWalletMovements,
   lastWalletMovementsData,
   initialWalletMovementsColumns,
 } from "views/trainer/wallet/Util";
-import Navbar from "components/navbar/Navbar";
-import moment from "moment";
-import ReusableTable from "components/reusableTable/ReusableTable";
 import ModalWalletMovements from "components/modals/modalWalletMovements/ModalWalletMovements";
+import ReusableTable from "components/reusableTable/ReusableTable";
+import moment from "moment";
+import Navbar from "components/navbar/Navbar";
 import "moment/locale/es";
 
-export default function Wallet({ clients }: any) {
-  const [movements, setMovements] = useState<any>(initialWalletMovements);
+export default function Wallet({ clients, movements, setMovements }: any) {
   const [selectedDate, setSelectedDate] = useState(initialWalletDate);
   const [typeOfMovement, setTypeOfMovement] = useState<number>(0);
   const [modalWalletMovements, setModalWalletMovements] = useState(false);

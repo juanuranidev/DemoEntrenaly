@@ -1,7 +1,6 @@
 import React from "react";
 import {
   dataForChart,
-  lastWalletMovements,
   lastWalletMovementsData,
   lastWalletMovementsColumns,
 } from "views/trainer/dashboard/Util";
@@ -12,7 +11,7 @@ import { Pie } from "react-chartjs-2";
 import Navbar from "components/navbar/Navbar";
 import ReusableTable from "components/reusableTable/ReusableTable";
 
-export default function Dashboard({ clients, trainer }: any) {
+export default function Dashboard({ clients, trainer, movements }: any) {
   const router = useRouter();
   ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -27,24 +26,24 @@ export default function Dashboard({ clients, trainer }: any) {
       <Container
         pt="10"
         px="0"
+        display="flex"
         borderRadius="md"
         maxW="container.xl"
-        display="flex"
         flexDirection={{ base: "column", md: "row" }}
       >
         <Container
           p="5"
-          w="100%"
           mr="5"
-          mb={{ base: "5", md: "0" }}
+          w="100%"
           display="flex"
-          alignContent="center"
-          justifyContent={{ base: "center", md: "flex-start" }}
-          borderRadius="md"
-          maxW="container.xl"
           bg="brand.500"
           color="#ffffff"
+          borderRadius="md"
+          maxW="container.xl"
+          alignContent="center"
           shadow="brand_shadow_md"
+          mb={{ base: "5", md: "0" }}
+          justifyContent={{ base: "center", md: "flex-start" }}
         >
           <Heading
             size={{ base: "2xl", md: "lg" }}
@@ -60,11 +59,11 @@ export default function Dashboard({ clients, trainer }: any) {
           borderRadius="md"
           maxW="container.xl"
           bg="background.primary"
-          onClick={() => router.push("/trainer/wallet")}
-          _hover={{ cursor: "pointer" }}
           shadow="brand_shadow_md"
           mb={{ base: "5", md: "0" }}
+          _hover={{ cursor: "pointer" }}
           w={{ base: "100%", md: "25rem" }}
+          onClick={() => router.push("/trainer/wallet")}
         >
           <Heading size="sm">INGRESOS ESTE MES</Heading>
           <Stat>
@@ -76,11 +75,11 @@ export default function Dashboard({ clients, trainer }: any) {
           borderRadius="md"
           maxW="container.xl"
           bg="background.primary"
-          onClick={() => router.push("/trainer/clients")}
-          _hover={{ cursor: "pointer" }}
           shadow="brand_shadow_md"
           mb={{ base: "5", md: "0" }}
+          _hover={{ cursor: "pointer" }}
           w={{ base: "100%", md: "25rem" }}
+          onClick={() => router.push("/trainer/clients")}
         >
           <Heading size="sm">CLIENTES ACTIVOS</Heading>
           <Stat>
@@ -98,36 +97,36 @@ export default function Dashboard({ clients, trainer }: any) {
       >
         <Container
           p="5"
-          shadow="brand_shadow_lg"
-          w={{ base: "100%", md: "70%" }}
           mr="5"
-          mb={{ base: "5", md: "0" }}
           display="flex"
-          alignContent="center"
-          justifyContent="flex-start"
           borderRadius="md"
           maxW="container.xl"
-          bg="background.primary"
+          alignContent="center"
           flexDirection="column"
+          bg="background.primary"
+          shadow="brand_shadow_lg"
+          justifyContent="flex-start"
+          mb={{ base: "5", md: "0" }}
+          w={{ base: "100%", md: "70%" }}
         >
-          <Heading size="sm">ULTIMOS MOVIMIENTOS DE BILLETERA</Heading>
+          <Heading size="sm">ULTIMOS 5 MOVIMIENTOS DE BILLETERA</Heading>
           <ReusableTable
             columns={lastWalletMovementsColumns}
-            data={lastWalletMovementsData(lastWalletMovements)}
+            data={lastWalletMovementsData(movements.slice(0, 5))}
           />
         </Container>
         <Container
           p="5"
-          shadow="brand_shadow_lg"
-          w={{ base: "100%", md: "30%" }}
-          mb={{ base: "5", md: "0" }}
           display="flex"
-          alignContent="center"
-          justifyContent="flex-start"
           borderRadius="md"
           maxW="container.xl"
-          bg="background.primary"
+          alignContent="center"
           flexDirection="column"
+          bg="background.primary"
+          shadow="brand_shadow_lg"
+          justifyContent="flex-start"
+          mb={{ base: "5", md: "0" }}
+          w={{ base: "100%", md: "30%" }}
         >
           <Heading size="sm" mb="5">
             TOTAL ESTE MES
