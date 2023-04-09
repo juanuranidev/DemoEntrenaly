@@ -1,16 +1,16 @@
 import React from "react";
 import { Container, HStack, Image, Link, Text } from "@chakra-ui/react";
-import HeartIcon from "assets/icons/HeartIcon.svg";
+import HeartIcon from "assets/icons/heartIcon.svg";
 
 export default function Footer() {
   return (
     <Container
       p="4"
+      h="3rem"
       maxW="full"
+      bg="brand.500"
       display="flex"
       justifyContent="center"
-      bg="brand.500"
-      h="3rem"
     >
       <HStack spacing="1">
         <Text fontWeight="600" fontSize="sm" color="#ffffff">
