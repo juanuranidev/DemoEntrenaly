@@ -108,7 +108,13 @@ export default function Settings({ trainer, setTrainer }: any) {
   });
 
   return (
-    <Container maxW="full" minH="100vh" bg="background.tertiary" p="0" pb="10">
+    <Container
+      p="0"
+      pb="10"
+      maxW="full"
+      bg="background.tertiary"
+      minH="calc(100vh - 3rem)"
+    >
       <Navbar />
       <Container
         p="5"

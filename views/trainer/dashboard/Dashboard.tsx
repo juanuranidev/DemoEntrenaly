@@ -23,8 +23,8 @@ export default function Dashboard({ clients, trainer, movements }: any) {
     <Container
       p="0"
       maxW="full"
-      h="calc(100vh - 3rem)"
       bg="background.tertiary"
+      minH="calc(100vh - 3rem)"
     >
       <Navbar />
       <Container
