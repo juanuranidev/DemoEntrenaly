@@ -1,5 +1,3 @@
-![Preview Image](/demoentrenaly/assets/images/preview.png?raw=true "Preview of Demo Entrenaly")
-
 # Techno Store
 
 Demo Entrenaly is a demo application that I will use to give a free trial to potential Entrenaly customers and also to show people a glimpse of how it is made.

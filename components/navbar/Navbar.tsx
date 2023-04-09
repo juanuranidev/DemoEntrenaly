@@ -12,14 +12,13 @@ import {
   HStack,
   Button,
   MenuList,
+  Collapse,
   MenuItem,
   Container,
   IconButton,
   MenuButton,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
-  Collapse,
 } from "@chakra-ui/react";
 import menuIcon from "assets/icons/menuIcon.svg";
 import closeIcon from "assets/icons/closeIcon.svg";
@@ -56,7 +55,6 @@ export default function Navbar() {
               rounded={"md"}
               _hover={{
                 textDecoration: "underline",
-                // bg: useColorModeValue("gray.200", "gray.700"),
               }}
               href="/trainer/dashboard"
             >
@@ -76,7 +74,6 @@ export default function Navbar() {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "underline",
-                  // bg: useColorModeValue("gray.200", "gray.700"),
                 }}
                 href="/trainer/dashboard"
               >
@@ -91,7 +88,6 @@ export default function Navbar() {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "underline",
-                  // bg: useColorModeValue("gray.200", "gray.700"),
                 }}
                 href="/trainer/wallet"
               >
@@ -106,7 +102,6 @@ export default function Navbar() {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "underline",
-                  // bg: useColorModeValue("gray.200", "gray.700"),
                 }}
                 href="/trainer/plans"
               >
@@ -121,7 +116,6 @@ export default function Navbar() {
                 rounded={"md"}
                 _hover={{
                   textDecoration: "underline",
-                  // bg: useColorModeValue("gray.200", "gray.700"),
                 }}
                 href="/trainer/clients"
               >
@@ -138,12 +132,7 @@ export default function Navbar() {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+                <Avatar size={"sm"} src={""} />
               </MenuButton>
               <MenuList p={0}>
                 <MenuItem>
@@ -155,12 +144,10 @@ export default function Navbar() {
                       textDecoration: "none",
                     }}
                     href="/trainer/settings"
-                    // color="#ffffff"
                   >
                     Configuración
                   </Link>
                 </MenuItem>
-                {/* <MenuItem>Link 2</MenuItem> */}
                 <MenuDivider m={0} />
                 <MenuItem>
                   <Link
@@ -170,7 +157,6 @@ export default function Navbar() {
                     w="100%"
                     _hover={{
                       textDecoration: "none",
-                      // bg: useColorModeValue("gray.200", "gray.700"),
                     }}
                     href="/"
                   >
@@ -193,7 +179,6 @@ export default function Navbar() {
               rounded={"md"}
               _hover={{
                 textDecoration: "none",
-                // bg: useColorModeValue("gray.200", "gray.700"),
                 background: "#ffffff",
                 color: "#000000",
               }}
@@ -210,7 +195,6 @@ export default function Navbar() {
               rounded={"md"}
               _hover={{
                 textDecoration: "none",
-                // bg: useColorModeValue("gray.200", "gray.700"),
                 background: "#ffffff",
                 color: "#000000",
               }}
@@ -227,7 +211,6 @@ export default function Navbar() {
               rounded={"md"}
               _hover={{
                 textDecoration: "none",
-                // bg: useColorModeValue("gray.200", "gray.700"),
 
                 background: "#ffffff",
                 color: "#000000",
@@ -247,7 +230,6 @@ export default function Navbar() {
                 textDecoration: "none",
                 background: "#ffffff",
                 color: "#000000",
-                // bg: useColorModeValue("gray.200", "gray.700"),
               }}
               href="/trainer/clients"
               color="#ffffff"
@@ -264,7 +246,6 @@ export default function Navbar() {
                 textDecoration: "none",
                 background: "#ffffff",
                 color: "#000000",
-                // bg: useColorModeValue("gray.200", "gray.700"),
               }}
               href="/trainer/settings"
               color="#ffffff"
