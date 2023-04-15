@@ -783,7 +783,7 @@ export const clientsInitialValue = {
   name: "Juan",
   lastName: "",
   email: "juan@gmail.com",
-  phone: 1111111111,
+  phone: "1111111111",
   notes: "Notas...",
   password: "contraseña",
   category: "deporte",
@@ -796,8 +796,7 @@ export const clientsInitialValue = {
   injuries: "Sin lesiones",
   medicalConditions: "Sin condiciones médicas",
   initialDate: "2023-01-17T01:30:06.513Z",
-  expiredDate: "2023-02-17T03:00:00.000Z",
-  id: 0.5872430285926182,
+  id: "0.5872430285926182",
 };
 
 export const trainerInitialValue = {

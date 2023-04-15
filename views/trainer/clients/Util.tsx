@@ -1,8 +1,9 @@
 import { Menu, Image, MenuList, MenuItem, MenuButton } from "@chakra-ui/react";
+import { ClientModel } from "models/Client.model";
 import horizontalMenu from "assets/icons/horizontalMenu.svg";
 import trashIcon from "assets/icons/trashIcon.svg";
-import editIcon from "assets/icons/editIcon.svg";
 import infoIcon from "assets/icons/infoIcon.svg";
+import editIcon from "assets/icons/editIcon.svg";
 
 export const clientsColumns = [
   {
@@ -28,7 +29,7 @@ export const clientsColumns = [
 ];
 
 export const formatClientsData = (
-  data: any,
+  data: ClientModel[],
   searchBarValue: any,
   handleOpenModalConfirm: any,
   handleOpenModalEditClient: any,
@@ -37,14 +38,14 @@ export const formatClientsData = (
   if (!data) return null;
 
   return data
-    .filter((client: any) => {
+    .filter((client: ClientModel) => {
       if (!searchBarValue) {
         return client;
       } else {
         return client.name.toLowerCase().includes(searchBarValue);
       }
     })
-    .map((client: any) => ({
+    .map((client: ClientModel) => ({
       name: client.name || "" + client.lastName || "",
       category: client.category,
       subCategory: client.subCategory,

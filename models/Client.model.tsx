@@ -1,6 +1,6 @@
 export type ClientModel = {
-  id: any;
-  phone?: any;
+  id?: string;
+  phone?: string;
   name: string;
   goals?: string;
   notes?: string;
@@ -13,8 +13,7 @@ export type ClientModel = {
   password?: string;
   lastName?: string;
   subCategory: string;
-  initialDate?: string;
-  expiredDate?: string;
+  initialDate?: Date | string;
   planAssigned?: string;
   medicalConditions?: string;
 };

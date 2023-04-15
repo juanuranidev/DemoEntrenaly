@@ -12,7 +12,7 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import { clientsColumns, formatClientsData } from "./Util";
-import { ClientModel } from "models/client.model";
+import { ClientModel } from "models/Client.model";
 import Navbar from "components/navbar/Navbar";
 import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
 import ReusableTable from "components/reusableTable/ReusableTable";
@@ -114,17 +114,17 @@ export default function Clients({ clients, setClients, plans }: any) {
               shadow="brand_shadow_lg"
             >
               <Flex
-                flexDirection={{ base: "column", md: "row" }}
                 alignItems="center"
+                flexDirection={{ base: "column", md: "row" }}
               >
                 <FormControl
                   mr={{ base: "0", md: "2" }}
                   mb={{ base: "3", md: "0" }}
                 >
                   <Input
+                    value={searchBarValue}
                     bg="background.primary"
                     placeholder="Buscar cliente por nombre"
-                    value={searchBarValue}
                     onChange={(e) => setSearchBarValue(e.target.value)}
                   />
                 </FormControl>
@@ -164,8 +164,8 @@ export default function Clients({ clients, setClients, plans }: any) {
       {modalConfirm ? (
         <ModalConfirm
           isOpen={modalConfirm}
-          onSubmit={handleDeleteClient}
           onClose={handleCloseModals}
+          onSubmit={handleDeleteClient}
           buttons={{ cancel: "Cancelar", confirm: "Eliminar" }}
           body={`¿Está seguro que desea eliminar a ${clientSelected?.name}?`}
         />
