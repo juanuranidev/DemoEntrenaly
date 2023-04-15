@@ -22,8 +22,8 @@ export default function Login() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [loginCredentials, setLoginCredentials] = useState({
-    username: "",
-    password: "",
+    username: "testing",
+    password: "testing",
   });
 
   const handleLogin = async () => {
@@ -106,7 +106,7 @@ export default function Login() {
                     <Text ml="2">Recordarme</Text>
                   </Flex>
                   <Link
-                    href="https://api.whatsapp.com/send/?phone=543512900942&text=%C2%A1Hola%21+Necesito+recuperar+mi+contrase%C3%B1a&type=phone_number&app_absent=0"
+                    href="https://api.whatsapp.com/send/?phone=0000000000&text=%C2%A1Hola%21+Necesito+recuperar+mi+contrase%C3%B1a&type=phone_number&app_absent=0"
                     target="_blank"
                   >
                     <Button
