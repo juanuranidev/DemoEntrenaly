@@ -7,21 +7,22 @@ import {
   Switch,
   Button,
   VStack,
-  Divider,
   HStack,
+  Divider,
   Textarea,
   FormLabel,
   ModalBody,
+  InputGroup,
   FormControl,
   ModalFooter,
   ModalHeader,
   ModalContent,
   ModalOverlay,
-  ModalCloseButton,
-  InputGroup,
   InputLeftAddon,
+  ModalCloseButton,
 } from "@chakra-ui/react";
-import { ClientModel } from "models/client.model";
+import { WalletMovementModel } from "models/WalletMovement.model";
+import { ClientModel } from "models/Client.model";
 import { useFormik } from "formik";
 import { useToast } from "@chakra-ui/react";
 import * as Yup from "yup";
@@ -42,7 +43,7 @@ interface ModalConfirmProps {
   clients: Array<ClientModel>;
   typeOfMovement: number;
   onClose: () => void;
-  onSubmit: (object: object) => void;
+  onSubmit: (movement: WalletMovementModel) => void;
 }
 
 export default function ModalWalletMovements({
@@ -57,18 +58,19 @@ export default function ModalWalletMovements({
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        type: typeOfMovement,
         amount: "",
         reason: "",
-        clientRelated: false,
         client: "",
         observation: "",
+        type: typeOfMovement,
+        clientRelated: false,
       },
       onSubmit: (values) => {
         onSubmit({
           ...values,
           date: moment(new Date()).format("DD/MM/YYYY"),
           type: Number(values.type),
+          amount: Number(values.amount),
         });
         toast({
           isClosable: true,

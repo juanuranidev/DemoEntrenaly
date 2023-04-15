@@ -2,12 +2,15 @@ import {
   Text,
   Menu,
   Image,
-  MenuItem,
   MenuList,
+  MenuItem,
   MenuButton,
 } from "@chakra-ui/react";
+import { WalletMovementModel } from "models/WalletMovement.model";
 import horizontalMenu from "assets/icons/horizontalMenu.svg";
 import trashIcon from "assets/icons/trashIcon.svg";
+
+export const initialWalletDate = new Date().toISOString().substring(0, 7);
 
 export const initialWalletMovementsColumns = [
   {
@@ -40,10 +43,10 @@ export const initialWalletMovementsColumns = [
   },
 ];
 
-export const lastWalletMovementsData = (movements: any) => {
+export const lastWalletMovementsData = (movements: WalletMovementModel[]) => {
   if (!movements) return null;
 
-  return movements.map((movement: any) => ({
+  return movements.map((movement: WalletMovementModel) => ({
     date: movement.date,
     type:
       movement.type === 1 ? (
@@ -74,5 +77,3 @@ export const lastWalletMovementsData = (movements: any) => {
     ),
   }));
 };
-
-export const initialWalletDate = new Date().toISOString().substring(0, 7);

@@ -22,6 +22,7 @@ import {
   handleGetTotalWalletIncome,
   handleGetTotalWalletExpenses,
 } from "util/wallet";
+import { WalletMovementModel } from "models/WalletMovement.model";
 import ModalWalletMovements from "components/modals/modalWalletMovements/ModalWalletMovements";
 import ReusableTable from "components/reusableTable/ReusableTable";
 import moment from "moment";
@@ -38,7 +39,7 @@ export default function Wallet({ clients, movements, setMovements }: any) {
     setModalWalletMovements(true);
   };
 
-  const handleSubmitWalletMovement = (movement: any) => {
+  const handleSubmitWalletMovement = (movement: WalletMovementModel) => {
     setMovements([...movements, movement]);
   };
 
@@ -185,7 +186,9 @@ export default function Wallet({ clients, movements, setMovements }: any) {
           clients={clients}
           isOpen={modalWalletMovements}
           typeOfMovement={typeOfMovement}
-          onSubmit={handleSubmitWalletMovement}
+          onSubmit={(movement: WalletMovementModel) =>
+            handleSubmitWalletMovement(movement)
+          }
           onClose={() => setModalWalletMovements(false)}
         />
       ) : null}

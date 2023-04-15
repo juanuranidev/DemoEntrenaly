@@ -1,3 +1,4 @@
+import { WalletMovementModel } from "models/WalletMovement.model";
 import { Text } from "@chakra-ui/react";
 
 export const dataForChart = (income: number, expenses: number) => {
@@ -38,10 +39,10 @@ export const lastWalletMovementsColumns = [
   },
 ];
 
-export const lastWalletMovementsData = (movements: any) => {
+export const lastWalletMovementsData = (movements: WalletMovementModel[]) => {
   if (!movements) return null;
 
-  return movements.map((movement: any) => ({
+  return movements.map((movement: WalletMovementModel) => ({
     date: movement.date,
     type:
       movement.type === 1 ? (
