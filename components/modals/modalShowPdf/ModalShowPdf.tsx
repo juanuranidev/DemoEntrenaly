@@ -28,7 +28,7 @@ import {
   ModalCloseButton,
   Textarea,
 } from "@chakra-ui/react";
-import { ClientModel } from "models/client.model";
+import { ClientModel } from "models/Client.model";
 import rightArrow from "assets/icons/rightArrow.svg";
 import leftArrow from "assets/icons/leftArrow.svg";
 import moment from "moment";

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Text,
   Modal,
-  Flex,
   Image,
   Input,
   Select,
@@ -15,7 +14,6 @@ import {
   Textarea,
   Collapse,
   FormLabel,
-  ModalBody,
   FormControl,
   ModalFooter,
   ModalHeader,
@@ -24,10 +22,9 @@ import {
   useDisclosure,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import { ClientModel } from "models/Client.model";
 import { useFormik } from "formik";
-import { ClientModel } from "models/client.model";
 import * as Yup from "yup";
-import moment from "moment/moment";
 import infoIcon from "assets/icons/infoIcon.svg";
 
 interface ModalAddClientProps {
@@ -51,10 +48,6 @@ export default function ModalAddClient({
 }: ModalAddClientProps) {
   const [isLabelOpen, setIsLabelOpen] = useState<boolean>(false);
   const { isOpen: open, onOpen, onClose: close } = useDisclosure();
-
-  const date = new Date();
-  date.setHours(date.getHours() - 3);
-  const isoDate = date.toISOString();
 
   const addClientSchema = Yup.object().shape({
     name: Yup.string().required("*"),
@@ -80,52 +73,34 @@ export default function ModalAddClient({
     handleSubmit,
   } = useFormik({
     initialValues: {
-      name: clientSelected ? clientSelected.name : "",
-      lastName: clientSelected ? clientSelected.lastName : "",
-      email: clientSelected ? clientSelected.email : "",
-      phone: clientSelected ? clientSelected.phone : "",
-      notes: clientSelected ? clientSelected.notes : "",
-      password: clientSelected ? clientSelected.password : "",
-      category: clientSelected ? clientSelected.category : "",
-      subCategory: clientSelected ? clientSelected.subCategory : "",
-      planAssigned: clientSelected ? clientSelected.planAssigned : "",
-      login: clientSelected ? clientSelected.login : false,
-      height: clientSelected ? clientSelected.height : "",
-      weight: clientSelected ? clientSelected.weight : "",
-      goals: clientSelected ? clientSelected.goals : "",
-      injuries: clientSelected ? clientSelected.injuries : "",
-      medicalConditions: clientSelected ? clientSelected.medicalConditions : "",
-      initialDate: clientSelected ? clientSelected.initialDate : "",
-      expiredDate: clientSelected
-        ? moment(clientSelected.expiredDate).format("YYYY-MM-DD")
-        : moment().format("YYYY-MM-DD"),
+      name: clientSelected?.name || "",
+      lastName: clientSelected?.lastName || "",
+      email: clientSelected?.email || "",
+      phone: clientSelected?.phone || "",
+      notes: clientSelected?.notes || "",
+      password: clientSelected?.password || "",
+      category: clientSelected?.category || "",
+      subCategory: clientSelected?.subCategory || "",
+      planAssigned: clientSelected?.planAssigned || "",
+      login: clientSelected?.login || false,
+      height: clientSelected?.height || "",
+      weight: clientSelected?.weight || "",
+      goals: clientSelected?.goals || "",
+      injuries: clientSelected?.injuries || "",
+      medicalConditions: clientSelected?.medicalConditions || "",
+      initialDate: clientSelected?.initialDate || new Date(),
     },
     onSubmit: (values: ClientModel) => {
-      const fechaElegida = values.expiredDate;
-      const fecha = new Date(fechaElegida);
-      fecha.setHours(fecha.getHours() + 3);
-      const fechaTransformada = fecha.toISOString();
-
-      const currentDate = new Date();
-      const initialDate = currentDate.toISOString();
-
       resetForm();
       if (isEditing) {
-        handleEditClient({
-          ...values,
-          expiredDate: fechaTransformada,
-          initialDate: isoDate,
-        });
+        handleEditClient({ ...values, initialDate: new Date() });
       } else {
-        onSubmit({
-          ...values,
-          expiredDate: fechaTransformada,
-          initialDate: isoDate,
-        });
+        onSubmit({ ...values, initialDate: new Date() });
       }
     },
     validationSchema: addClientSchema,
   });
+
   const handleRenderOptions = (category: string) => {
     if (category === "entrenamiento") {
       return (
@@ -184,6 +159,7 @@ export default function ModalAddClient({
       ));
     }
   };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" preserveScrollBarGap>
       <ModalOverlay />
@@ -222,19 +198,6 @@ export default function ModalAddClient({
                 onChange={handleChange}
               />
             </FormControl>
-            {/* <FormControl display="flex" alignItems="center">
-                <FormLabel width="100%">Apellido</FormLabel>
-                <Input
-                  p="1"
-                  type="text"
-                  name="lastName"
-                  maxLength={30}
-                  value={values.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  size="sm"
-                />
-              </FormControl> */}
             <FormControl
               display="flex"
               alignItems="center"
@@ -344,21 +307,6 @@ export default function ModalAddClient({
                 )}
                 {handleRenderPlansOptions()}
               </Select>
-            </FormControl>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel width="100%" display="flex" alignItems="center">
-                Fecha vencimiento
-              </FormLabel>
-              <Input
-                p="1"
-                name="expiredDate"
-                type="date"
-                min={date.toISOString().split("T")[0]}
-                value={values.expiredDate}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                size="sm"
-              />
             </FormControl>
             <FormControl display="flex" alignItems="center">
               <FormLabel width="100%">Notas</FormLabel>
