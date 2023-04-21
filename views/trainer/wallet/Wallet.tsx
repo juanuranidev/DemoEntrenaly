@@ -117,7 +117,10 @@ export default function Wallet({ clients, movements, setMovements }: any) {
             </Heading>
             <Stat>
               <StatNumber color="red">
-                -${handleGetTotalWalletExpenses(movements)}
+                -$
+                {handleGetTotalWalletExpenses(movements).toLocaleString(
+                  "ES-ar"
+                )}
               </StatNumber>
               <StatHelpText>
                 Mes de {moment(selectedDate).format("MMMM - yyyy")}
@@ -141,7 +144,7 @@ export default function Wallet({ clients, movements, setMovements }: any) {
             </Heading>
             <Stat w="100%">
               <StatNumber color="green">
-                ${handleGetTotalWalletIncome(movements)}
+                ${handleGetTotalWalletIncome(movements).toLocaleString("ES-ar")}
               </StatNumber>
               <StatHelpText>
                 Mes de {moment(selectedDate).format("MMMM - yyyy")}
