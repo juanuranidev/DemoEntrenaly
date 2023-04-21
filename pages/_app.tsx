@@ -10,6 +10,7 @@ import { WalletMovementModel } from "models/WalletMovement.model";
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { hotjarConnect } from "config/hotjar";
+import { TrainerModel } from "models/Trainer.model";
 import { ClientModel } from "models/Client.model";
 import { chakraTheme } from "../assets/chakra/chakraTheme";
 import Footer from "components/footer/Footer";
@@ -19,7 +20,7 @@ import "assets/css/base.css";
 export default function App({ Component, pageProps }: AppProps) {
   const [plans, setPlans] = useState([workoutPlansInitialValue]);
   const [clients, setClients] = useState<ClientModel[]>([clientsInitialValue]);
-  const [trainer, setTrainer] = useState(trainerInitialValue);
+  const [trainer, setTrainer] = useState<TrainerModel>(trainerInitialValue);
   const [movements, setMovements] = useState<WalletMovementModel[]>(
     initialWalletMovements
   );
