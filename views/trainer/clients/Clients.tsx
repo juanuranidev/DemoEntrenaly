@@ -7,17 +7,17 @@ import {
   Button,
   TabList,
   useToast,
-  Container,
   TabPanels,
+  Container,
   FormControl,
 } from "@chakra-ui/react";
 import { clientsColumns, formatClientsData } from "./Util";
 import { ClientModel } from "models/Client.model";
-import Navbar from "components/navbar/Navbar";
-import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
-import ReusableTable from "components/reusableTable/ReusableTable";
-import ModalAddClient from "components/modals/modalAddClient/ModalAddClient";
 import ModalClientDetail from "components/modals/modalClientDetail/ModalClientDetail";
+import ModalAddClient from "components/modals/modalAddClient/ModalAddClient";
+import ReusableTable from "components/reusableTable/ReusableTable";
+import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
+import Navbar from "components/navbar/Navbar";
 
 export default function Clients({ clients, setClients, plans }: any) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
