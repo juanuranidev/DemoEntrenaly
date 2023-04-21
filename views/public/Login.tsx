@@ -10,8 +10,8 @@ import {
   Button,
   Heading,
   Checkbox,
-  Container,
   FormLabel,
+  Container,
   FormControl,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
