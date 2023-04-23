@@ -18,6 +18,7 @@ import {
   MenuButton,
   FormControl,
 } from "@chakra-ui/react";
+import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import ModalAddNutritionPlan from "components/modals/modalAddNutritionPlan/ModalAddNutritionPlan";
 import ModalAddPlan from "components/modals/modalAddPlan/ModalAddPlan";
 import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
@@ -45,14 +46,16 @@ export default function Plans({
   const [pdfType, setPdfType] = useState<string>("");
   const [modalConfirm, setModalConfirm] = useState<boolean>(false);
   const [modalShowPdf, setModalShowPdf] = useState<boolean>(false);
-  const [planSelected, setPlanSelected] = useState<any>(null);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
+  const [planSelected, setPlanSelected] = useState<WorkoutPlanModel | null>(
+    null
+  );
   const [modalAddWorkoutPlan, setModalAddWorkoutPlan] =
     useState<boolean>(false);
   const [modalAddNutritionPlan, setModalAddNutritionPlan] =
     useState<boolean>(false);
 
-  const handleOpenModalShowPdf = (plan: any, type: string) => {
+  const handleOpenModalShowPdf = (plan: WorkoutPlanModel, type: string) => {
     setPdfType(type);
     setPlanSelected(plan);
     setModalShowPdf(true);
@@ -64,7 +67,7 @@ export default function Plans({
     setModalShowPdf(false);
   };
 
-  const handleOpenModalEditWorkoutPlan = (plan: any) => {
+  const handleOpenModalEditWorkoutPlan = (plan: WorkoutPlanModel) => {
     setPlanSelected(plan);
     setModalAddWorkoutPlan(true);
   };
@@ -74,18 +77,18 @@ export default function Plans({
     setModalAddNutritionPlan(true);
   };
 
-  const handleOpenModalCofirm = (plan: any) => {
+  const handleOpenModalCofirm = (plan: WorkoutPlanModel) => {
     setPlanSelected(plan);
     setModalConfirm(true);
   };
 
   const handleDeletePlan = () => {
-    if (planSelected.type === "nutrition") {
+    if (planSelected!.type === "nutrition") {
       setNutritionPlans(
-        nutritionPlans.filter((plan: any) => plan.id !== planSelected.id)
+        nutritionPlans.filter((plan: any) => plan.id !== planSelected!.id)
       );
     } else {
-      setPlans(plans.filter((plann: any) => plann.id !== planSelected.id));
+      setPlans(plans.filter((plann: any) => plann.id !== planSelected!.id));
     }
     setModalConfirm(false);
     setPlanSelected(null);
