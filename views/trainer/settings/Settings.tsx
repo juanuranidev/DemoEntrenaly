@@ -8,11 +8,10 @@ import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
 import SettingsForm from "views/trainer/settings/SettingsForm";
 
 export default function Settings({ trainer, setTrainer }: any) {
-  const router = useRouter();
   const toast = useToast();
+  const router = useRouter();
 
   const [videos, setVideos] = useState<any>(trainer?.videos || []);
-  const [isLabelOpen, setIsLabelOpen] = useState<boolean>(false);
   const [videoSelected, setVideoSelected] = useState<number>();
   const [videoModalConfirm, setVideoModalConfirm] = useState<boolean>(false);
   const [testimonials, setTestimonials] = useState<any>(
@@ -24,12 +23,13 @@ export default function Settings({ trainer, setTrainer }: any) {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const newVideos = [...videos];
-    newVideos[index].link = event.target.value;
+    newVideos[index] = { ...newVideos[index], link: event.target.value };
     setVideos(newVideos);
   };
 
   const handleRemoveVideo = (index: number) => {
-    if (!videos[index].link) {
+    const videoLink = videos[index].link;
+    if (!videoLink) {
       const updatedVideos = [...videos];
       updatedVideos.splice(index, 1);
       setVideos(updatedVideos);
@@ -114,8 +114,8 @@ export default function Settings({ trainer, setTrainer }: any) {
           handleChange={handleChange}
           setTestimonials={setTestimonials}
           handleRemoveVideo={handleRemoveVideo}
-          handleRemoveTestimonials={handleRemoveTestimonials}
           handleChangeVideos={handleChangeVideos}
+          handleRemoveTestimonials={handleRemoveTestimonials}
           handleChangeTestimonials={handleChangeTestimonials}
         />
       </Container>
