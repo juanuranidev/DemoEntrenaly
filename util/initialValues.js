@@ -1,5 +1,6 @@
 export const workoutPlansInitialValue = {
   name: "Musculación Enero",
+  type: "workout",
   days: [
     {
       day: {

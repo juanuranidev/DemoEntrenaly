@@ -7,6 +7,7 @@ import {
   nutritionPlansInitialValue,
 } from "util/initialValues";
 import { WalletMovementModel } from "models/WalletMovement.model";
+import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { hotjarConnect } from "config/hotjar";
@@ -18,9 +19,11 @@ import Head from "next/head";
 import "assets/css/base.css";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [plans, setPlans] = useState([workoutPlansInitialValue]);
   const [clients, setClients] = useState<ClientModel[]>([clientsInitialValue]);
   const [trainer, setTrainer] = useState<TrainerModel>(trainerInitialValue);
+  const [plans, setPlans] = useState<WorkoutPlanModel[]>([
+    workoutPlansInitialValue,
+  ]);
   const [movements, setMovements] = useState<WalletMovementModel[]>(
     initialWalletMovements
   );
