@@ -2,22 +2,18 @@ import React from "react";
 import {
   Text,
   Flex,
-  Image,
   Button,
-  Input,
-  HStack,
   VStack,
   Select,
-  FormControl,
-  FormLabel,
   Textarea,
+  FormLabel,
+  FormControl,
 } from "@chakra-ui/react";
-import { Formik, Form, Field, useFormik } from "formik";
-import trashIcon from "assets/icons/trashIcon.svg";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const nutritionPlanSchema = Yup.object().shape({
-    name: Yup.string().required("*"),
+  name: Yup.string().required("*"),
 });
 
 export default function NutritionPlanForm({
@@ -64,8 +60,7 @@ export default function NutritionPlanForm({
     ];
 
     const missingDays = days.filter(
-      (day) =>
-        !valuesGeneral.days.find((objDay) => objDay.name === day)
+      (day) => !valuesGeneral.days.find((objDay) => objDay.name === day)
     );
 
     return missingDays.map((missingDay, index) => (
@@ -81,9 +76,7 @@ export default function NutritionPlanForm({
           <FormLabel display="flex" alignItems="center" m="0">
             Nombre del día{" "}
             <Text
-              color={
-                Boolean(errors.name && touched.name) ? "red" : "black"
-              }
+              color={Boolean(errors.name && touched.name) ? "red" : "black"}
               pl="1"
             >
               *

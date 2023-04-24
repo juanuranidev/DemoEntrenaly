@@ -11,14 +11,15 @@ import {
   Collapse,
   useDisclosure,
 } from "@chakra-ui/react";
+import { DaysModel, NutritionPlanModel } from "models/NutritionPlan.model";
 import downArrowIcon from "assets/icons/downArrowIcon.svg";
 import upArrowIcon from "assets/icons/upArrowIcon.svg";
 import trashIcon from "assets/icons/trashIcon.svg";
 
 interface NutritionDayInfoProps {
-  day: any;
-  values: any;
+  day: DaysModel;
   setFieldValue: any;
+  values: NutritionPlanModel;
 }
 
 export default function NutritionDayInfo({
@@ -30,7 +31,7 @@ export default function NutritionDayInfo({
 
   const handleRemoveDayOfPlan = (dayName: string) => {
     const daysOfPlan = values.days;
-    const newDays = daysOfPlan.filter((day: any) => day.name !== dayName);
+    const newDays = daysOfPlan.filter((day: DaysModel) => day.name !== dayName);
 
     setFieldValue("days", newDays);
   };
@@ -60,18 +61,15 @@ export default function NutritionDayInfo({
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
-              fontWeight="600"
               fontSize="18"
+              fontWeight="600"
               w={{ base: "100%", md: "14rem" }}
-              // mb={{ base: "2", md: "0" }}
             >
               Desayuno
             </Text>
-              <Text w={{base: "100%", md: "80%"}}>
-
+            <Text w={{ base: "100%", md: "80%" }}>
               {day.meals?.breakfast ? day.meals.breakfast : "---"}
-              </Text>
-
+            </Text>
           </Flex>
           <Divider />
           <Flex
@@ -80,18 +78,15 @@ export default function NutritionDayInfo({
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
-              fontWeight="600"
               fontSize="18"
+              fontWeight="600"
               w={{ base: "100%", md: "14rem" }}
-              // mb={{ base: "2", md: "0" }}
             >
               Almuerzo
             </Text>
-              <Text w={{base: "100%", md: "80%"}}>
-
+            <Text w={{ base: "100%", md: "80%" }}>
               {day.meals?.lunch ? day.meals.lunch : "---"}
-              </Text>
-
+            </Text>
           </Flex>
           <Divider />
           <Flex
@@ -100,39 +95,32 @@ export default function NutritionDayInfo({
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
-              fontWeight="600"
               fontSize="18"
+              fontWeight="600"
               w={{ base: "100%", md: "14rem" }}
-              // mb={{ base: "2", md: "0" }}
             >
               Merienda
             </Text>
-              <Text w={{base: "100%", md: "80%"}}>
-
+            <Text w={{ base: "100%", md: "80%" }}>
               {day.meals?.afternoonSnack ? day.meals.afternoonSnack : "---"}
-              </Text>
-
+            </Text>
           </Flex>
           <Divider />
           <Flex
             alignItems="center"
             justifyContent="space-between"
-
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
-              fontWeight="600"
               fontSize="18"
+              fontWeight="600"
               w={{ base: "100%", md: "14rem" }}
-              // mb={{ base: "2", md: "0" }}
             >
               Cena
             </Text>
-              <Text w={{base: "100%", md: "80%"}}>
-
+            <Text w={{ base: "100%", md: "80%" }}>
               {day.meals?.dinner ? day.meals.dinner : "---"}
-              </Text>
-
+            </Text>
           </Flex>
           <Divider />
           <Flex
@@ -141,18 +129,15 @@ export default function NutritionDayInfo({
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
-              fontWeight="600"
               fontSize="18"
+              fontWeight="600"
               w={{ base: "100%", md: "14rem" }}
-              // mb={{ base: "2", md: "0" }}
             >
               Snacks {"(agregados)"}
             </Text>
-              <Text w={{base: "100%", md: "80%"}}>
-
+            <Text w={{ base: "100%", md: "80%" }}>
               {day.meals?.snacks ? day.meals.snacks : "---"}
-              </Text>
-
+            </Text>
           </Flex>
         </VStack>
       </Box>

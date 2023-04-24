@@ -5,6 +5,7 @@ import {
   Flex,
   Text,
   Input,
+  Alert,
   Modal,
   VStack,
   Button,
@@ -14,6 +15,7 @@ import {
   Collapse,
   ModalBody,
   TabPanels,
+  AlertIcon,
   FormLabel,
   ModalFooter,
   ModalHeader,
@@ -23,11 +25,8 @@ import {
   useDisclosure,
   ModalCloseButton,
   FormErrorMessage,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
 } from "@chakra-ui/react";
+import { NutritionPlanModel } from "models/NutritionPlan.model";
 import { useFormik } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
@@ -35,11 +34,11 @@ import NutritionPlanForm from "./NutritionPlanForm";
 import NutritionDayInfo from "./NutritionDayInfo";
 
 interface ModalAddNutritionPlanProps {
-  isOpen: any;
+  isOpen: boolean;
   onClose: () => void;
   setPlanSelected: any;
   planSelected: any;
-  nutritionPlans: any;
+  nutritionPlans: NutritionPlanModel[];
   setNutritionPlans: any;
 }
 
@@ -52,51 +51,45 @@ export default function ModalAddNutritionPlan({
 }: ModalAddNutritionPlanProps) {
   const [tabView, setTabView] = useState(0);
   const { isOpen: isNutritionPlanFormOpen, onToggle } = useDisclosure();
-  const handleTabsChange = (index: any) => setTabView(index);
+  const handleTabsChange = (index: number) => setTabView(index);
 
   const nutritionPlanSchema = Yup.object().shape({
     name: Yup.string().required("*"),
   });
-  console.log(planSelected)
-  const {
-    values,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    setFieldValue,
-  } = useFormik({
-    initialValues: {
-      name: planSelected ? planSelected.name : "",
-      days: planSelected ? planSelected.days : [],
-      hasFile: false,
-      file: "",
-      type: "nutrition",
-    },
-    onSubmit: (values: any) => {
-      if (planSelected) {
-        const arrawWithout = nutritionPlans.filter(
-          (plann: any) => plann.id !== planSelected.id
-        );
-        const arrayWith = [...arrawWithout, values];
 
-        setNutritionPlans(arrayWith);
-      } else {
-        setNutritionPlans([
-          ...nutritionPlans,
-          {
-            ...values,
-            file: tabView ? values.file : null,
-            hasFile: tabView ? true : false,
-            id: moment().format("MMMM Do YYYY, h:mm:ss a"),
-          },
-        ]);
-      }
-      onClose();
-    },
-    validationSchema: nutritionPlanSchema,
-  });
+  const { values, errors, touched, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues: {
+        file: "",
+        hasFile: false,
+        type: "nutrition",
+        id: planSelected ? planSelected.id : "",
+        name: planSelected ? planSelected.name : "",
+        days: planSelected ? planSelected.days : [],
+      },
+      onSubmit: (values: NutritionPlanModel) => {
+        if (planSelected) {
+          const arrawWithout = nutritionPlans.filter(
+            (plann: NutritionPlanModel) => plann.id !== planSelected.id
+          );
+          const arrayWith = [...arrawWithout, values];
+
+          setNutritionPlans(arrayWith);
+        } else {
+          setNutritionPlans([
+            ...nutritionPlans,
+            {
+              ...values,
+              file: tabView ? values.file : null,
+              hasFile: tabView ? true : false,
+              id: new Date(),
+            },
+          ]);
+        }
+        onClose();
+      },
+      validationSchema: nutritionPlanSchema,
+    });
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="2xl">
