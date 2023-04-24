@@ -18,6 +18,7 @@ import {
   MenuButton,
   FormControl,
 } from "@chakra-ui/react";
+import { NutritionPlanModel } from "models/NutritionPlan.model";
 import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import ModalAddNutritionPlan from "components/modals/modalAddNutritionPlan/ModalAddNutritionPlan";
 import ModalAddPlan from "components/modals/modalAddPlan/ModalAddPlan";
@@ -47,15 +48,18 @@ export default function Plans({
   const [modalConfirm, setModalConfirm] = useState<boolean>(false);
   const [modalShowPdf, setModalShowPdf] = useState<boolean>(false);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
-  const [planSelected, setPlanSelected] = useState<WorkoutPlanModel | null>(
-    null
-  );
   const [modalAddWorkoutPlan, setModalAddWorkoutPlan] =
     useState<boolean>(false);
   const [modalAddNutritionPlan, setModalAddNutritionPlan] =
     useState<boolean>(false);
+  const [planSelected, setPlanSelected] = useState<
+    WorkoutPlanModel | NutritionPlanModel | null
+  >(null);
 
-  const handleOpenModalShowPdf = (plan: WorkoutPlanModel, type: string) => {
+  const handleOpenModalShowPdf = (
+    plan: WorkoutPlanModel | NutritionPlanModel,
+    type: string
+  ) => {
     setPdfType(type);
     setPlanSelected(plan);
     setModalShowPdf(true);
@@ -72,12 +76,14 @@ export default function Plans({
     setModalAddWorkoutPlan(true);
   };
 
-  const handleOpenModalEditNutritionPlan = (plan: any) => {
+  const handleOpenModalEditNutritionPlan = (plan: NutritionPlanModel) => {
     setPlanSelected(plan);
     setModalAddNutritionPlan(true);
   };
 
-  const handleOpenModalCofirm = (plan: WorkoutPlanModel) => {
+  const handleOpenModalCofirm = (
+    plan: WorkoutPlanModel | NutritionPlanModel
+  ) => {
     setPlanSelected(plan);
     setModalConfirm(true);
   };
@@ -85,10 +91,14 @@ export default function Plans({
   const handleDeletePlan = () => {
     if (planSelected!.type === "nutrition") {
       setNutritionPlans(
-        nutritionPlans.filter((plan: any) => plan.id !== planSelected!.id)
+        nutritionPlans.filter(
+          (plan: NutritionPlanModel) => plan.id !== planSelected!.id
+        )
       );
     } else {
-      setPlans(plans.filter((plann: any) => plann.id !== planSelected!.id));
+      setPlans(
+        plans.filter((plann: WorkoutPlanModel) => plann.id !== planSelected!.id)
+      );
     }
     setModalConfirm(false);
     setPlanSelected(null);
@@ -147,7 +157,7 @@ export default function Plans({
                   justifyContent={{ base: "center", lg: "flex-start" }}
                 >
                   {plans
-                    ?.filter((plan: any) => {
+                    ?.filter((plan: WorkoutPlanModel) => {
                       if (!searchBarValue) {
                         return plan;
                       } else {
@@ -156,7 +166,7 @@ export default function Plans({
                           .includes(searchBarValue.toLowerCase());
                       }
                     })
-                    .map((plan: any, index: number) => {
+                    .map((plan: WorkoutPlanModel, index: number) => {
                       return (
                         <VStack
                           p="5"
@@ -261,7 +271,7 @@ export default function Plans({
                   justifyContent={{ base: "center", lg: "flex-start" }}
                 >
                   {nutritionPlans
-                    ?.filter((plan: any) => {
+                    ?.filter((plan: NutritionPlanModel) => {
                       if (!searchBarValue) {
                         return plan;
                       } else {
@@ -270,7 +280,7 @@ export default function Plans({
                           .includes(searchBarValue.toLowerCase());
                       }
                     })
-                    .map((plan: any, index: number) => {
+                    .map((plan: NutritionPlanModel, index: number) => {
                       return (
                         <VStack
                           p="5"
