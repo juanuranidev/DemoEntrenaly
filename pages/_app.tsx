@@ -7,6 +7,7 @@ import {
   nutritionPlansInitialValue,
 } from "util/initialValues";
 import { WalletMovementModel } from "models/WalletMovement.model";
+import { NutritionPlanModel } from "models/NutritionPlan.model";
 import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
@@ -21,13 +22,13 @@ import "assets/css/base.css";
 export default function App({ Component, pageProps }: AppProps) {
   const [clients, setClients] = useState<ClientModel[]>([clientsInitialValue]);
   const [trainer, setTrainer] = useState<TrainerModel>(trainerInitialValue);
-  const [plans, setPlans] = useState<WorkoutPlanModel[]>([
-    workoutPlansInitialValue,
-  ]);
   const [movements, setMovements] = useState<WalletMovementModel[]>(
     initialWalletMovements
   );
-  const [nutritionPlans, setNutritionPlans] = useState([
+  const [plans, setPlans] = useState<WorkoutPlanModel[]>([
+    workoutPlansInitialValue,
+  ]);
+  const [nutritionPlans, setNutritionPlans] = useState<NutritionPlanModel[]>([
     nutritionPlansInitialValue,
   ]);
 
