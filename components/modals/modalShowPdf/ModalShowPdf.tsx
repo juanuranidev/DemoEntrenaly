@@ -1,42 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Box,
-  Text,
   Modal,
-  Input,
-  Flex,
-  Image,
-  Alert,
-  Select,
-  HStack,
-  Button,
-  VStack,
-  Avatar,
   Divider,
-  FormLabel,
-  AlertIcon,
   ModalBody,
-  IconButton,
-  AlertTitle,
-  FormControl,
-  ButtonGroup,
-  ModalFooter,
   ModalHeader,
   ModalContent,
   ModalOverlay,
-  AlertDescription,
   ModalCloseButton,
-  Textarea,
 } from "@chakra-ui/react";
-import { ClientModel } from "models/Client.model";
-import rightArrow from "assets/icons/rightArrow.svg";
-import leftArrow from "assets/icons/leftArrow.svg";
-import moment from "moment";
+import { NutritionPlanModel } from "models/NutritionPlan.model";
+import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import { PDFViewer } from "@react-pdf/renderer";
 import PlanPdf from "components/pdf/PlanPdf";
 import NutritionPlanPdf from "components/pdf/NutritionPlanPdf";
 interface ModalShowPdfProps {
-  plan: any;
+  plan: WorkoutPlanModel | NutritionPlanModel | null;
   isOpen: boolean;
   onClose: () => void;
   type: string;
@@ -60,7 +38,7 @@ export default function ModalShowPdf({
     <Modal isOpen={isOpen} onClose={onClose} size="2xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{plan.name}</ModalHeader>
+        <ModalHeader>{plan!.name}</ModalHeader>
         <ModalCloseButton />
         <Divider />
         <ModalBody>
