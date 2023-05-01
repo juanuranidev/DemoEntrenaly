@@ -5,7 +5,6 @@ import {
   Text,
   Image,
   Button,
-  HStack,
   VStack,
   Divider,
   Heading,
@@ -21,32 +20,16 @@ export default function Index({ trainer }: any) {
 
   useEffect(() => {
     if (!url) {
-      // router.push("clients");
       console.log("NO hay url");
     }
   }, []);
-  console.log(trainer);
 
   const convertToEmbedUrl = (url: string) => url.replace("watch?v=", "embed/");
 
-  function getYoutubeVideoId(url: string) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[2].length == 11 ? match[2] : null;
-  }
-
   return (
     <Container maxW="full" minH="100vh" bg="background.primary" p="0">
-      {/* <Image
-        w="100%"
-        h="50vh"
-        src={trainerHeader.src}
-        // h={{ base: "20vh", sm: "30vh", md: "40vh", lg: "50vh", xl: "60vh" }}
-      /> */}
       <Flex w="100%" justifyContent="space-around" alignItems="center" py="20">
         <Container
-          // p="5"
-          // mb="10"
           borderRadius="md"
           maxW="container.xl"
           display="flex"
