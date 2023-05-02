@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Flex,
   Box,
   Text,
+  Flex,
   Image,
   Button,
   VStack,
@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import AliceCarousel from "react-alice-carousel";
+import trainerHeader from "assets/images/trainerHeader.png";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 export default function Index({ trainer }: any) {
