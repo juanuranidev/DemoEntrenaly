@@ -14,14 +14,19 @@ import { useRouter } from "next/router";
 import AliceCarousel from "react-alice-carousel";
 // import trainerHeader from "assets/images/trainerHeader.png";
 import "react-alice-carousel/lib/alice-carousel.css";
+import { TrainerModel } from "models/Trainer.model";
 
-export default function Index({ trainer }: any) {
+interface IndexProps {
+  trainer: TrainerModel;
+}
+
+export default function Index({ trainer }: IndexProps) {
   const router = useRouter();
   const { url } = router.query;
 
   useEffect(() => {
-    if (!url) {
-      console.log("NO hay url");
+    if (!trainer.hasAPage || url !== trainer.url) {
+      router.push("/");
     }
   }, []);
 
@@ -33,7 +38,7 @@ export default function Index({ trainer }: any) {
             color="#ffffff"
             fontSize={{ base: "5xl", md: "6xl", lg: "7xl", xl: "8xl" }}
           >
-            {trainer?.name} {trainer?.lastName}
+            {trainer?.name}
           </Heading>
           <Text
             color="#ffffff"
@@ -110,7 +115,7 @@ export default function Index({ trainer }: any) {
           </VStack>
         </Container>
       </Flex>
-      {trainer?.testimonials?.length ? (
+      {/* {trainer?.testimonials?.length ? (
         <Flex w="100%" py="20" justifyContent="center" bg="brand.500">
           <Container
             // p="5"
@@ -159,7 +164,7 @@ export default function Index({ trainer }: any) {
           >
             {/* <Heading pb="10" textAlign="center">
               VIDEOS
-            </Heading> */}
+            </Heading>
             <Flex
               w="100%"
               flexDirection={{ base: "column", md: "row" }}
@@ -182,36 +187,14 @@ export default function Index({ trainer }: any) {
                       width="100%"
                       height="100%"
                       controls={true}
-                    /> */}
+                    />
                   </Box>
                 );
               })}
             </Flex>
           </Container>
         </VStack>
-      ) : null}
-      {/* <Flex w="100%" mb="10" py="20" justifyContent="center">
-        <Container
-          borderRadius="md"
-          maxW="container.xl"
-          display="flex"
-          flexDirection={{ base: "column", md: "row" }}
-          alignItems="center"
-          justifyContent="space-evenly"
-        >
-          <VStack mb={{ base: "10", md: "0" }}>
-            <Heading size={{ base: "lg", md: "xl" }} mb="2">
-              ¿{trainer?.name} es tu entrenador?
-            </Heading>
-            <Text fontSize={{ base: "md", md: "lg" }}>
-              Inicia sesión y descargar tu plan
-            </Text>
-          </VStack>
-          <Button variant="outlined" w={{ base: "18rem", md: "12rem" }}>
-            Iniciar Sesión
-          </Button>
-        </Container>
-      </Flex> */}
+      ) : null} */}
     </Container>
   );
 }
