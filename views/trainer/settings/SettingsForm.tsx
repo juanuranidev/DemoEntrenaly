@@ -21,6 +21,7 @@ import {
 import { TrainerModel } from "models/Trainer.model";
 import infoIcon from "assets/icons/infoIcon.svg";
 import trashIcon from "assets/icons/trashIcon.svg";
+import Link from "next/link";
 
 interface SettingsProps {
   values: TrainerModel;
@@ -319,9 +320,19 @@ export default function SettingsForm({
           />
         </Tooltip>
         {values.hasAPage ? (
-          <Button ml="2" variant="link" onClick={() => router.push("/juanura")}>
-            Ver Página
-          </Button>
+          <Link href={`/${values.url}`} target="_blank">
+            {!values.url ? (
+              <Tooltip label="Ingresa una url">
+                <Button ml="2" variant="link" isDisabled>
+                  Ver Página
+                </Button>
+              </Tooltip>
+            ) : (
+              <Button ml="2" variant="link">
+                Ver Página
+              </Button>
+            )}
+          </Link>
         ) : null}
       </FormControl>
       {values.hasAPage ? (
