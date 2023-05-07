@@ -2,6 +2,7 @@ export type TrainerModel = {
   url?: string;
   name?: string;
   email?: string;
+  videos?: string[];
   number?: number;
   youtube?: string;
   headline?: string;
@@ -10,4 +11,5 @@ export type TrainerModel = {
   instagram?: string;
   hasAPage?: boolean;
   description?: string;
+  testimonials?: string[];
 };
