@@ -182,10 +182,10 @@ export default function Url({ trainer }: UrlProps) {
               {trainer.videos.map((video: any, index: number) => {
                 return (
                   <Container
-                    mr="5"
-                    mb="5"
                     key={index}
                     display="flex"
+                    margin="auto"
+                    mb="5"
                     borderRadius="lg"
                     height={{ base: "64", md: "64" }}
                     width={{ base: "100%", md: "40%" }}
