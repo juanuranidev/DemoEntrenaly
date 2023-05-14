@@ -20,7 +20,7 @@ import moment from "moment";
 import { ClientModel } from "models/Client.model";
 
 interface ModalClientDetailProps {
-  client: ClientModel;
+  client: ClientModel | undefined;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -80,7 +80,7 @@ export default function ModalClientDetail({
               <Text w="50%" fontWeight="600">
                 Fecha de creación:
               </Text>
-              <Text>{moment(client.initialDate).format("DD/MM/YYYY")}</Text>
+              <Text>{moment(client?.initialDate).format("DD/MM/YYYY")}</Text>
             </HStack>
             <HStack w="100%">
               <Text w="50%" fontWeight="600">

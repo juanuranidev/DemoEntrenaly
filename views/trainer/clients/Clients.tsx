@@ -12,6 +12,7 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import { clientsColumns, formatClientsData } from "./Util";
+import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import { ClientModel } from "models/Client.model";
 import ModalClientDetail from "components/modals/modalClientDetail/ModalClientDetail";
 import ModalAddClient from "components/modals/modalAddClient/ModalAddClient";
@@ -19,18 +20,26 @@ import ReusableTable from "components/reusableTable/ReusableTable";
 import ModalConfirm from "components/modals/modalConfirm/ModalConfirm";
 import Navbar from "components/navbar/Navbar";
 
-export default function Clients({ clients, setClients, plans }: any) {
+interface ClientsProps {
+  clients: ClientModel[];
+  plans: WorkoutPlanModel[];
+  setClients: (clients: ClientModel[]) => void;
+}
+
+export default function Clients({ clients, setClients, plans }: ClientsProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [modalConfirm, setModalConfirm] = useState<boolean>(false);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
   const [modalAddClient, setModalAddClient] = useState<boolean>(false);
-  const [clientSelected, setClientSelected] = useState<any>();
+  const [clientSelected, setClientSelected] = useState<
+    ClientModel | undefined
+  >();
   const [modalClientDetail, setModalClientDetail] = useState<boolean>(false);
 
   const toast = useToast();
 
   const handleAddClient = (object: ClientModel) => {
-    setClients([...clients, { ...object, id: Math.random() }]);
+    setClients([...clients, { ...object, id: String(new Date()) }]);
     handleCloseModals();
     toast({
       isClosable: true,
@@ -42,9 +51,9 @@ export default function Clients({ clients, setClients, plans }: any) {
 
   const handleEditClient = (object: ClientModel) => {
     let newArray = clients.filter(
-      (client: ClientModel) => client.id !== clientSelected?.id
+      (obj: ClientModel) => obj.id !== clientSelected?.id
     );
-    setClients([...newArray, { ...object, id: Math.random() }]);
+    setClients([...newArray, { ...object, id: String(new Date()) }]);
     handleCloseModals();
     toast({
       isClosable: true,
@@ -59,7 +68,7 @@ export default function Clients({ clients, setClients, plans }: any) {
       clients.filter((client: ClientModel) => client.id !== clientSelected?.id)
     );
     setModalConfirm(false);
-    setClientSelected(null);
+    setClientSelected(undefined);
     toast({
       isClosable: true,
       status: "success",
@@ -85,11 +94,11 @@ export default function Clients({ clients, setClients, plans }: any) {
   };
 
   const handleCloseModals = () => {
-    setClientSelected(undefined);
     setIsEditing(false);
     setModalConfirm(false);
     setModalAddClient(false);
     setModalClientDetail(false);
+    setClientSelected(undefined);
   };
 
   return (

@@ -33,7 +33,7 @@ interface ModalAddClientProps {
   plans: any;
   onSubmit: (object: ClientModel) => void;
   isEditing: boolean;
-  clientSelected: ClientModel;
+  clientSelected: ClientModel | undefined;
   handleEditClient: (object: ClientModel) => void;
 }
 
@@ -167,7 +167,7 @@ export default function ModalAddClient({
         <form onSubmit={handleSubmit}>
           <ModalHeader>
             {isEditing
-              ? `Editar Cliente ${clientSelected.name}`
+              ? `Editar Cliente ${clientSelected?.name}`
               : "Nuevo Cliente"}
           </ModalHeader>
           <ModalCloseButton />
