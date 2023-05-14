@@ -10,12 +10,25 @@ import {
 } from "util/wallet";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Stat, Heading, Container, StatNumber } from "@chakra-ui/react";
+import { WalletMovementModel } from "models/WalletMovement.model";
+import { TrainerModel } from "models/Trainer.model";
+import { ClientModel } from "models/Client.model";
 import { useRouter } from "next/router";
 import { Pie } from "react-chartjs-2";
 import Navbar from "components/navbar/Navbar";
 import ReusableTable from "components/reusableTable/ReusableTable";
 
-export default function Dashboard({ clients, trainer, movements }: any) {
+interface DashboardProps {
+  clients: ClientModel[];
+  trainer: TrainerModel;
+  movements: WalletMovementModel[];
+}
+
+export default function Dashboard({
+  clients,
+  trainer,
+  movements,
+}: DashboardProps) {
   const router = useRouter();
   ChartJS.register(ArcElement, Tooltip, Legend);
 

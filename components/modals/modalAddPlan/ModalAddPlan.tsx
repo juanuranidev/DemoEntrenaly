@@ -6,12 +6,14 @@ import {
   Text,
   Input,
   Modal,
+  Alert,
   VStack,
   Button,
   TabList,
   Divider,
   TabPanel,
   Collapse,
+  AlertIcon,
   ModalBody,
   TabPanels,
   FormLabel,
@@ -23,12 +25,9 @@ import {
   useDisclosure,
   ModalCloseButton,
   FormErrorMessage,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { WorkoutPlanModel } from "models/WorkoutPlan.model";
 import PlanForm from "components/modals/modalAddPlan/PlanForm";
 import DayInfo from "./DayInfo";
 import moment from "moment";
@@ -58,7 +57,6 @@ export default function ModalAddPlan({
 
   const addPlanSchema = Yup.object().shape({
     name: Yup.string().required("*"),
-    // file: Yup.string().required("*"),
   });
 
   const {
@@ -194,7 +192,7 @@ export default function ModalAddPlan({
                 </TabPanel>
                 <TabPanel>
                   <VStack spacing="5">
-                  <FormControl
+                    <FormControl
                       isInvalid={Boolean(touched.name && errors.name)}
                     >
                       <FormLabel display="flex" alignItems="center">
