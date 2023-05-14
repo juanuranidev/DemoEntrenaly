@@ -31,11 +31,11 @@ import pdfImage from "assets/images/pdfImage.png";
 import pdfIcon from "assets/icons/pdfIcon.svg";
 import Navbar from "components/navbar/Navbar";
 
-interface IndexProps {
-  plans: any;
-  setPlans: any;
-  nutritionPlans: any;
-  setNutritionPlans: any;
+interface PlansProps {
+  plans: WorkoutPlanModel[];
+  setPlans: (plan: any) => void;
+  nutritionPlans: NutritionPlanModel[];
+  setNutritionPlans: (plan: any) => void;
 }
 
 export default function Plans({
@@ -43,7 +43,7 @@ export default function Plans({
   setPlans,
   nutritionPlans,
   setNutritionPlans,
-}: IndexProps) {
+}: PlansProps) {
   const [pdfType, setPdfType] = useState<string>("");
   const [modalConfirm, setModalConfirm] = useState<boolean>(false);
   const [modalShowPdf, setModalShowPdf] = useState<boolean>(false);
@@ -91,14 +91,10 @@ export default function Plans({
   const handleDeletePlan = () => {
     if (planSelected!.type === "nutrition") {
       setNutritionPlans(
-        nutritionPlans.filter(
-          (plan: NutritionPlanModel) => plan.id !== planSelected!.id
-        )
+        nutritionPlans.filter((obj: any) => obj.id !== planSelected!.id)
       );
     } else {
-      setPlans(
-        plans.filter((plann: WorkoutPlanModel) => plann.id !== planSelected!.id)
-      );
+      setPlans(plans.filter((obj: any) => obj.id !== planSelected!.id));
     }
     setModalConfirm(false);
     setPlanSelected(null);
@@ -240,10 +236,10 @@ export default function Plans({
             <TabPanel p="0">
               <Container
                 p="5"
-                shadow="brand_shadow_lg"
                 borderRadius="md"
                 maxW="container.xl"
                 bg="background.primary"
+                shadow="brand_shadow_lg"
               >
                 <Flex flexDirection={{ base: "column", sm: "row" }}>
                   <FormControl
@@ -251,15 +247,15 @@ export default function Plans({
                     mb={{ base: "2", sm: "0" }}
                   >
                     <Input
+                      value={searchBarValue}
                       bg="background.primary"
                       placeholder="Buscar plan por nombre"
-                      value={searchBarValue}
                       onChange={(e) => setSearchBarValue(e.target.value)}
                     />
                   </FormControl>
                   <Button
-                    variant="primary"
                     shadow="md"
+                    variant="primary"
                     onClick={() => setModalAddNutritionPlan(true)}
                   >
                     Nuevo plan
@@ -287,11 +283,11 @@ export default function Plans({
                           m="5"
                           key={index}
                           w={{
-                            base: "100%",
                             sm: "60%",
                             md: "40%",
                             lg: "28%",
                             xl: "20%",
+                            base: "100%",
                           }}
                           shadow="lg"
                           spacing="4"
@@ -327,7 +323,6 @@ export default function Plans({
                                     Editar
                                   </MenuItem>
                                 ) : null}
-
                                 <MenuItem
                                   onClick={() => handleOpenModalCofirm(plan)}
                                 >
@@ -339,8 +334,8 @@ export default function Plans({
                           </Flex>
                           <Image src={pdfImage.src} width="28" />
                           <Text
-                            fontWeight="600"
                             fontSize="lg"
+                            fontWeight="600"
                             textAlign="center"
                           >
                             {plan.name}
@@ -358,9 +353,9 @@ export default function Plans({
         <ModalAddPlan
           plans1={plans}
           setPlans={setPlans}
+          planSelected={planSelected}
           isModalOpen={modalAddWorkoutPlan}
           setPlanSelected={setPlanSelected}
-          planSelected={planSelected}
           onClose={() => {
             setPlanSelected(null);
             setModalAddWorkoutPlan(false);
@@ -369,11 +364,11 @@ export default function Plans({
       ) : null}
       {modalAddNutritionPlan ? (
         <ModalAddNutritionPlan
-          nutritionPlans={nutritionPlans}
-          setNutritionPlans={setNutritionPlans}
           planSelected={planSelected}
           isOpen={modalAddNutritionPlan}
+          nutritionPlans={nutritionPlans}
           setPlanSelected={setPlanSelected}
+          setNutritionPlans={setNutritionPlans}
           onClose={() => {
             setPlanSelected(null);
             setModalAddNutritionPlan(false);
@@ -391,9 +386,9 @@ export default function Plans({
       {modalConfirm ? (
         <ModalConfirm
           isOpen={modalConfirm}
-          buttons={{ cancel: "Cancelar", confirm: "Eliminar" }}
           onSubmit={handleDeletePlan}
           onClose={() => setModalConfirm(false)}
+          buttons={{ cancel: "Cancelar", confirm: "Eliminar" }}
           body={`Estás seguro que deseas eliminar el plan ${planSelected?.name}`}
         />
       ) : null}

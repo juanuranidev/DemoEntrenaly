@@ -3,7 +3,6 @@ import NextLink from "next/link";
 import {
   Box,
   Menu,
-  Text,
   Flex,
   Link,
   Stack,

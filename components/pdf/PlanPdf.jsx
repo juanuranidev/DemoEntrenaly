@@ -118,9 +118,6 @@ export default function PlanPdf({ plan }) {
                                   }}
                                 >
                                   {exercise.name}
-                                  {/* - {exercise.sets} x{" "} */}
-                                  {/* {exercise.reps} rep{" "}
-                                  {exercise.isSuperSet ? "+" : null} */}
                                 </Text>
                                 <Text
                                   style={{
@@ -145,7 +142,6 @@ export default function PlanPdf({ plan }) {
               </View>
             );
           })}
-          {console.log(plan.days.length)}
           {plan.days.length === 7 ? (
             <View
               style={{ width: "25%", marginBottom: "20", textAlign: "center" }}
